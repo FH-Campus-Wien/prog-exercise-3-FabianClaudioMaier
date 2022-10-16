@@ -35,7 +35,7 @@ public class App {
     }
 
 
-    public static void oneMonthCalender(int numberOfDays, int firstDay) {
+    public static void oneMonthCalendar(int numberOfDays, int firstDay) {
         String output = "";
         int currentday;
 
@@ -61,15 +61,15 @@ public class App {
         }
     }
 
-    public static long[] Icg(long X0) {
+    public static long[] lcg(long X0) {
         long modul = 2147483648L;
         long factor = 1103515245L;
         int increment = 12345;
 
-        long[] X = new long[11];
-        X[0] = X0;
+        long[] X = new long[10];
+        X[0] = (X0* factor + increment)%modul;
 
-        for (int i = 1; i < 11; i++) {
+        for (int i = 1; i < 10; i++) {
             X[i] = (factor * X[i - 1] + increment) % modul;
         }
         return X;
@@ -80,7 +80,7 @@ public class App {
         int guess;
         int count = 1;
         while (true) {
-            System.out.printf("Guess number %d : ", count);
+            System.out.printf("Guess number %d: ", count);
             guess = scan.nextInt();
             if (guess == numberToGuess) {
                 System.out.println("You won wisenheimer!");
@@ -133,15 +133,16 @@ public class App {
         // make method calls
         // print their results
         // etc.
-        oneMonthCalender(28, 1);
+
+        oneMonthCalendar(28, 1);
 
 
-        long[] X = Icg(11223344);
+        long[] X = lcg(11223344);
         for (long x : X) {
             System.out.println(x);
         }
 
-        //guessingGame(randomNumberBetweenOneAndHundred());
+        guessingGame(randomNumberBetweenOneAndHundred());
 
         System.out.println(camelCase("my name isn't Alice"));
         System.out.println(checkDigit(new int[]{3, 9, 1, 5, 8}));
